@@ -5,7 +5,7 @@ require 'open-uri'
 def get_townhall_email(town)
   name_town = town['href'].delete_prefix '.' # urls without balise + delete "."
   pages = Nokogiri::HTML(URI.open("http://annuaire-des-mairies.com#{name_town}")) # mettre val url de get_townhall
-  pages.css('/html/body/div[1]/main/section[2]/div/table/tbody/tr[4]/td[2]').text # recuperation email
+  pages.xpath('/html/body/div[1]/main/section[2]/div/table/tbody/tr[4]/td[2]').text # recuperation email
 end
 
 def get_townhall
